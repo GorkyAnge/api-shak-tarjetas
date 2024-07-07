@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "server/index.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/api/charge", "dest": "server/routes/charge.js" },
+      { "src": "/api/recharge", "dest": "server/routes/recharge.js" },
+      { "src": "/api/register", "dest": "server/routes/register.js" },
+      { "src": "/api/(.*)", "dest": "server/index.js" }
+    ]
+  }
+  
