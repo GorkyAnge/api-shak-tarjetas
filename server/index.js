@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const registerRoute = require('./routes/register');
 const rechargeRoute = require('./routes/recharge');
 const chargeRoute = require('./routes/charge');
+const checkIdentifierRoute = require('./routes/checkIdentifier');
 
 const app = express();
 const port = 5001;
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 app.use('/api/register', registerRoute);
 app.use('/api/recharge', rechargeRoute);
 app.use('/api/charge', chargeRoute);
+app.use('/checkIdentifier', checkIdentifierRoute); 
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
