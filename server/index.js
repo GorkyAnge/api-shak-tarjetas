@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const registerRoute = require("./routes/register");
 const rechargeRoute = require("./routes/recharge");
 const chargeRoute = require("./routes/charge");
+const balanceRoute = require("./routes/balance");
 const checkIdentifierRoute = require("./routes/checkIdentifier");
 const cors = require("cors"); // Agrega cors
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 app.use("/api/register", registerRoute);
 app.use("/api/recharge", rechargeRoute);
 app.use("/api/charge", chargeRoute);
+app.use("/api/balance", balanceRoute);
 app.use("/checkIdentifier", checkIdentifierRoute);
 
 app.listen(port, () => {
