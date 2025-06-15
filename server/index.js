@@ -5,18 +5,14 @@ const rechargeRoute = require("./routes/recharge");
 const chargeRoute = require("./routes/charge");
 const balanceRoute = require("./routes/balance");
 const checkIdentifierRoute = require("./routes/checkIdentifier");
-const cors = require("cors"); // Agrega cors
+const cors = require("cors");
 
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001; // <- cambio aquí
 
-// Habilita CORS para cualquier origen
-app.use(cors()); // Esto permite solicitudes desde cualquier origen
-
-// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
-// Rutas
 app.get("/", (req, res) => {
   res.send("API REST para recargas de saldo en línea");
 });
