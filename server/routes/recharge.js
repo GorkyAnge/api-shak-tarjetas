@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
   const paymentData = req.body;
   try {
     const response = await axios.post(
-      "https://api-fake-paymentportal-production.up.railway.app/api/v1/payment/card",
+      "https://api-fake-paymentportal-cbea796d6f87.herokuapp.com/api/v1/payment/card",
       paymentData
     );
 
