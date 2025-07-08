@@ -13,7 +13,7 @@ router.get("/:identifier", async (req, res) => {
 
     res.json({
       identifier,
-      tieneMultas: multasInfo.tieneMultas,
+      tieneMultasSinPagar: multasInfo.tieneMultasSinPagar,
       mensaje: multasInfo.mensaje,
       timestamp: multasInfo.timestamp,
       consultaExitosa: true,

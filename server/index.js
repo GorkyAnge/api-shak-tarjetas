@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -9,6 +9,7 @@ const rechargeRoute = require("./routes/recharge");
 const chargeRoute = require("./routes/charge");
 const balanceRoute = require("./routes/balance");
 const checkIdentifierRoute = require("./routes/checkIdentifier");
+const multasRoute = require("./routes/multas");
 
 const app = express();
 const port = process.env.PORT || 5001; // <- cambio aquí
@@ -17,14 +18,15 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Auth routes (public)
-app.use('/api/auth', authRoute);
+app.use("/api/auth", authRoute);
 
 // Protected routes
-app.use('/api/register', authMiddleware, registerRoute);
-app.use('/api/recharge', authMiddleware, rechargeRoute);
-app.use('/api/charge', authMiddleware, chargeRoute);
-app.use('/api/balance', authMiddleware, balanceRoute);
-app.use('/checkIdentifier', authMiddleware, checkIdentifierRoute);
+app.use("/api/register", authMiddleware, registerRoute);
+app.use("/api/recharge", authMiddleware, rechargeRoute);
+app.use("/api/charge", authMiddleware, chargeRoute);
+app.use("/api/balance", authMiddleware, balanceRoute);
+app.use("/checkIdentifier", authMiddleware, checkIdentifierRoute);
+app.use("/api/multas", authMiddleware, multasRoute);
 
 app.get("/", (req, res) => {
   res.send("API REST para recargas de saldo en línea");

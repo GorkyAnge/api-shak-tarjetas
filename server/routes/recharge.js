@@ -14,11 +14,11 @@ router.post("/", async (req, res) => {
 
     const multasInfo = await multasService.verificarMultas(identifier);
 
-    if (multasInfo.tieneMultas) {
+    if (multasInfo.tieneMultasSinPagar) {
       return res.status(403).json({
         message:
           "No se puede procesar la recarga. El usuario tiene multas pendientes.",
-        tieneMultas: true,
+        tieneMultasSinPagar: true,
         detalleMultas: multasInfo.mensaje,
       });
     }
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
         message: "Recarga exitosa",
         newBalance,
         multasVerificadas: true,
-        tieneMultas: false,
+        tieneMultasSinPagar: false,
       });
     } else {
       // Si no existe, crearlo con el monto inicial
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
         message: "Identificador creado y recarga exitosa",
         newBalance: parseFloat(amount),
         multasVerificadas: true,
-        tieneMultas: false,
+        tieneMultasSinPagar: false,
       });
     }
   } catch (error) {
